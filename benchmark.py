@@ -1,3 +1,20 @@
+"""
+Trabalho de Inteligência Artificial - Algoritmos de Busca 
+
+Integrantes:
+Gabriel Alvise Schenorberger
+Gustavo Augusto
+João Gabriel Gnoatto Arataque
+Pedro Henrique Honório
+
+Algoritmos:
+- Busca em Profundidade
+- Busca em Largura
+
+Problema:
+- Problema do Labirinto
+"""
+
 from statistics import mean, stdev
 from time import perf_counter_ns
 import tracemalloc
@@ -12,7 +29,8 @@ quantidadeMedicoes = 10
 # Por isso, cada amostra de tempo executa a busca 1000 vezes.
 execucoesPorMedicao = 1000
 
-def resumir(valores):
+# Descarta o maior e o menor valor de cada métrica
+def resumirValores(valores):
     # Ordena as 10 amostras e descarta a menor e a maior.
     valoresOrdenados = sorted(valores)
     valoresUsados = valoresOrdenados[1:-1]
@@ -20,7 +38,7 @@ def resumir(valores):
     # Calcula média e desvio padrão das 8 amostras restantes.
     return mean(valoresUsados), stdev(valoresUsados)
 
-def medir(busca):
+def medirMetricas(busca):
     # Executa uma vez antes de medir para carregar a função e conferir o resultado.
     # Essa execução inicial não entra nas amostras.
     caminho, posicoesExploradas = busca(contar=True)
@@ -55,10 +73,10 @@ def medir(busca):
 
     return caminho, posicoesExploradas, tempos, memorias
 
-def exibir(nome, busca):
-    caminho, posicoesExploradas, tempos, memorias = medir(busca)
-    mediaTempo, desvioTempo = resumir(tempos)
-    mediaMemoria, desvioMemoria = resumir(memorias)
+def exibirMetricas(nome, busca):
+    caminho, posicoesExploradas, tempos, memorias = medirMetricas(busca)
+    mediaTempo, desvioTempo = resumirValores(tempos)
+    mediaMemoria, desvioMemoria = resumirValores(memorias)
 
     print(f"\n{nome}")
     print("Amostras de tempo (ms por execução):", ", ".join(f"{valor:.6f}" for valor in tempos))
@@ -68,7 +86,7 @@ def exibir(nome, busca):
     print("Solução encontrada:", "sim" if caminho else "não")
     print("Movimentos no caminho:", len(caminho) - 1 if caminho else "sem caminho")
     print("Posições examinadas até a saída:", posicoesExploradas)
-    
+
 if __name__ == "__main__":
-    exibir("DFS", buscaProfundidade)
-    exibir("BFS", buscaLargura)
+    exibirMetricas("DFS", buscaProfundidade)
+    exibirMetricas("BFS", buscaLargura)

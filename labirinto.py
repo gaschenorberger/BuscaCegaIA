@@ -15,6 +15,7 @@ Problema:
 - Problema do Labirinto
 """
 
+# Cada linha abaixo é uma linha do labirinto. O número 1 é caminho; 0 é parede.
 labirinto = [
     [1, 0, 0, 0, 0],
     [1, 1, 1, 0, 1],
@@ -24,17 +25,15 @@ labirinto = [
 ]
 
 
+# O primeiro número da posição é a linha; o segundo é a coluna.
 posicaoInicial = (0, 0)
 posicaoFinal = (4, 4)
 
-"""
-    Função para obter os vizinhos válidos de uma posição no labirinto.
-    Parâmetros: posicao (tuple) - A posição para a qual se deseja obter os vizinhos.
-    Retorno: list - Uma lista de posições vizinhas válidas.
-"""
 def obterVizinhos(posicao):
+    """Recebe uma posição e devolve as casas livres ao lado dela."""
     linha, coluna = posicao
 
+    # Vamos olhar as quatro casas ao lado: cima, baixo, esquerda e direita.
     movimentos = [
         (-1, 0),  # Cima
         (1, 0),   # Baixo
@@ -48,6 +47,7 @@ def obterVizinhos(posicao):
         novaLinha = linha + movimentoLinha
         novaColuna = coluna + movimentoColuna
 
+        # Só guardamos a casa se ela estiver dentro do mapa e não for parede.
         if (
             0 <= novaLinha < len(labirinto)
             and 0 <= novaColuna < len(labirinto[0])
