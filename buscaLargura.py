@@ -1,17 +1,13 @@
+from collections import deque
 from labirinto import posicaoInicial, posicaoFinal, obterVizinhos
 
-def buscaProfundidade(mostrarOrdem=False, contar=False):
-    pilha = [(posicaoInicial, [posicaoInicial])]
-    visitados = set()
+def buscaLargura(mostrarOrdem=False, contar=False):
+    fila = deque([(posicaoInicial, [posicaoInicial])])
+    visitados = {posicaoInicial}
     posicoesExploradas = 0
 
-    while pilha:
-        posicaoAtual, caminho = pilha.pop()
-
-        if posicaoAtual in visitados:
-            continue
-
-        visitados.add(posicaoAtual)
+    while fila:
+        posicaoAtual, caminho = fila.popleft()
         posicoesExploradas += 1
 
         if mostrarOrdem:
@@ -22,15 +18,16 @@ def buscaProfundidade(mostrarOrdem=False, contar=False):
 
         for vizinho in obterVizinhos(posicaoAtual):
             if vizinho not in visitados:
-                pilha.append((vizinho, caminho + [vizinho]))
+                visitados.add(vizinho)
+                fila.append((vizinho, caminho + [vizinho]))
 
     return (None, posicoesExploradas) if contar else None
 
 if __name__ == "__main__":
-    print("Ordem de exploração da DFS:")
-    resultado = buscaProfundidade(True)
+    print("Ordem de exploração da BFS:")
+    resultado = buscaLargura(True)
 
-    print("Caminho encontrado pela Busca em Profundidade:")
+    print("Caminho encontrado pela Busca em Largura:")
     if resultado:
         for posicao in resultado:
             print(posicao)

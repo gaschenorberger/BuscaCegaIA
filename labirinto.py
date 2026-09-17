@@ -27,6 +27,11 @@ labirinto = [
 posicaoInicial = (0, 0)
 posicaoFinal = (4, 4)
 
+"""
+    Função para obter os vizinhos válidos de uma posição no labirinto.
+    Parâmetros: posicao (tuple) - A posição para a qual se deseja obter os vizinhos.
+    Retorno: list - Uma lista de posições vizinhas válidas.
+"""
 def obterVizinhos(posicao):
     linha, coluna = posicao
 
