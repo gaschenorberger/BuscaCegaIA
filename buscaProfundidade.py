@@ -52,14 +52,14 @@ def buscaProfundidade(mostrarOrdem=False, contar=False):
     # Acabaram as casas para testar, então não encontramos a saída.
     return (None, posicoesExploradas) if contar else None
 
-# Mostra o resultado na tela quando executamos este arquivo.
-if __name__ == "__main__":
-    print("Ordem de exploração da DFS:")
-    resultado = buscaProfundidade(True)
 
-    print("Caminho encontrado pela Busca em Profundidade:")
-    if resultado:
-        for posicao in resultado:
-            print(posicao)
-    else:
-        print("Nenhum caminho encontrado")
+# Mostra o resultado na tela quando executamos este arquivo.
+print("Ordem de exploração da DFS:")
+resultado = buscaProfundidade(True)
+
+print("Caminho encontrado pela Busca em Profundidade:")
+if resultado:
+    for posicao in resultado:
+        print(posicao)
+else:
+    print("Nenhum caminho encontrado")

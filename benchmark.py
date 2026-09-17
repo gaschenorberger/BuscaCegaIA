@@ -87,6 +87,7 @@ def exibirMetricas(nome, busca):
     print("Movimentos no caminho:", len(caminho) - 1 if caminho else "sem caminho")
     print("Posições examinadas até a saída:", posicoesExploradas)
 
-if __name__ == "__main__":
-    exibirMetricas("DFS", buscaProfundidade)
-    exibirMetricas("BFS", buscaLargura)
+
+
+exibirMetricas("DFS", buscaProfundidade)
+exibirMetricas("BFS", buscaLargura)
