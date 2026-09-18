@@ -54,12 +54,13 @@ def buscaProfundidade(mostrarOrdem=False, contar=False):
 
 
 # Mostra o resultado na tela quando executamos este arquivo.
-print("Ordem de exploração da DFS:")
-resultado = buscaProfundidade(True)
+if __name__ == "__main__":
+    print("Ordem de exploração da DFS:")
+    resultado = buscaProfundidade(True)
 
-print("Caminho encontrado pela Busca em Profundidade:")
-if resultado:
-    for posicao in resultado:
-        print(posicao)
-else:
-    print("Nenhum caminho encontrado")
+    print("Caminho encontrado pela Busca em Profundidade:")
+    if resultado:
+        for posicao in resultado:
+            print(posicao)
+    else:
+        print("Nenhum caminho encontrado")

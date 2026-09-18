@@ -38,7 +38,7 @@ def obterVizinhos(posicao):
         (-1, 0),  # Cima
         (1, 0),   # Baixo
         (0, -1),  # Esquerda
-        (0, 1)    # Direita
+        (0, 1),   # Direita
     ]
 
     vizinhos = []

@@ -1,0 +1,31 @@
+função buscaLargura()
+
+    criar fila com:
+        posição inicial
+        caminho contendo a posição inicial
+
+    criar conjunto visitados contendo a posição inicial
+
+    enquanto a fila não estiver vazia:
+
+        retirar o primeiro elemento da fila
+        obter posicaoAtual e caminho
+
+        se posicaoAtual for a posição final:
+            retornar caminho
+
+        obter os vizinhos da posicaoAtual
+
+        para cada vizinho:
+
+            se vizinho não estiver em visitados:
+
+                adicionar vizinho em visitados
+
+                novoCaminho = caminho + vizinho
+
+                adicionar na fila:
+                    vizinho
+                    novoCaminho
+
+    retornar nenhuma solução

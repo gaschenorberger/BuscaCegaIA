@@ -1,0 +1,33 @@
+função buscaProfundidade()
+
+    criar pilha com:
+        posição inicial
+        caminho contendo a posição inicial
+
+    criar conjunto visitados vazio
+
+    enquanto a pilha não estiver vazia:
+
+        retirar o último elemento da pilha
+        obter posicaoAtual e caminho
+
+        se posicaoAtual for a posição final:
+            retornar caminho
+
+        se posicaoAtual já estiver em visitados:
+            continuar
+
+        adicionar posicaoAtual em visitados
+
+        obter os vizinhos da posicaoAtual
+
+        para cada vizinho:
+
+            se vizinho não estiver em visitados:
+                novoCaminho = caminho + vizinho
+
+                adicionar na pilha:
+                    vizinho
+                    novoCaminho
+
+    retornar nenhuma solução
